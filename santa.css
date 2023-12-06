@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Festive';
+}
+
+:root{
+    --red: #FD5E53;
+    --white: #F9FCFB;
+    --blue: #B0EACD;
+    --green: #21BF73;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background: linear-gradient(var(--red),var(--white));
+}
+
+.container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container::before{
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200px;
+    bottom: 0;
+    will-change: background-position;
+    background: url('media/tree.png');
+    background-repeat: repeat-x;
+    animation: go 10s reverse infinite linear;
+    filter: drop-shadow(0 0 .5rem var(--green)); 
+    z-index: 1;
+}
+
+@keyframes go {
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 100%;
+    }
+}
+
+.container .circle{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 .5rem var(--white);
+    border-radius: 50%;
+    background-color: var(--white);
+    transform: translateX(-50%);
+}
+
+.container .circle::before{
+    content: "";
+    position: absolute;
+    background: url('media/santa.png');
+    transform: rotateX(-30deg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    animation: animationSanta 5s ease-in-out alternate-reverse infinite;
+    filter: drop-shadow(0 0 .5rem var(--blue)); 
+    inset: -200px;
+}
+
+.containerSnow{
+    position: relative;
+    display: flex;
+}
+
+.containerSnow span{
+    position: relative;
+    min-width: .2rem;
+    height: .2rem;
+    background: var(--white);
+    box-shadow: 0 0 .4rem var(--white), 3rem 1.5rem .3rem var(--white); 
+    border-radius: 50%;
+    margin: 1rem;
+    z-index: 30;
+    will-change: transform;
+    animation: snowing 15s linear infinite;
+    animation-duration: calc(75s/var(--i));
+}
+
+.containerSnow span:nth-child(even){
+    min-width: .5rem;    
+    height: .5rem;
+}
+
+
+.countDown{
+    position: absolute;
+    width: 40vw;
+    height: 10vh;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--white);
+    font-size: 6rem;
+    text-shadow: 0 0 .5rem var(--white);
+}
+
+.countDown div{
+    min-width: 8rem;
+    text-align: right;
+    position: relative;
+}
+
+.countDown div:last-child{
+    text-align: start;
+}
+
+.countDown div::before{
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 800;
+    bottom: 0;
+    left: 30%;
+}
+
+.countDown div:nth-of-type(1)::before{
+    content: 'Days';
+}
+
+.countDown div:nth-of-type(2)::before{
+    content: 'Hours';
+    transform: translateX(-30%);
+}
+.countDown div:nth-of-type(3)::before{
+    content: 'Minutes';
+    transform: translateX(-30%);
+}
+.countDown div:nth-of-type(4)::before{
+    content: 'Seconds';
+    transform: translateX(-30%);
+}
+
+
+
+
+.countDown div:not(:last-child)::after{
+    content: ':';
+    position: relative;
+}
+
+@keyframes snowing {
+    0%{
+        transform: translateY(-10vh);
+    }    100%{
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes animationSanta {
+    0%{
+        transform: translateY(-25px) rotate(15deg);
+    }
+    100%{
+        transform: translateY(25px) rotate(5deg);
+    }
+}
