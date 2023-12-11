@@ -44,15 +44,6 @@ body{
     z-index: 1;
 }
 
-@keyframes go {
-    0%{
-        background-position: 0%;
-    }
-    100%{
-        background-position: 100%;
-    }
-}
-
 .container .circle{
     position: absolute;
     top: 10%;
@@ -151,12 +142,18 @@ body{
     transform: translateX(-30%);
 }
 
-
-
-
 .countDown div:not(:last-child)::after{
     content: ':';
     position: relative;
+}
+
+@keyframes go {
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 100%;
+    }
 }
 
 @keyframes snowing {
