@@ -30,16 +30,21 @@ function calcCountDown(){
         const finalTime = new Date('2023-12-25')
         console.log(finalTime);
         const difference = finalTime - timeNow
+        if(difference<0){
+            countDown.forEach(e => {
+                e.textContent = '00'
+            });
+        }
 
         const seconds = (difference / 1000) % 60
         const minutes = (difference / 1000 / 60) % 60
         const hours = (difference / 1000 / 60 / 60 ) % 24 
         const days = (difference / 1000 / 60 / 60 / 24)
  
-        countDown[3].innerHTML = validate(Math.floor(seconds))
-        countDown[2].innerHTML = validate(Math.floor(minutes))
-        countDown[1].innerHTML = validate(Math.floor(hours))
-        countDown[0].innerHTML = validate(Math.floor(days))
+        countDown[3].textContent = validate(Math.floor(seconds))
+        countDown[2].textContent = validate(Math.floor(minutes))
+        countDown[1].textContent = validate(Math.floor(hours))
+        countDown[0].textContent = validate(Math.floor(days))
     },500)
 }
 
